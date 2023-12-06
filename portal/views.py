@@ -4,8 +4,8 @@ from .models import InstallerDetail, CompanyDetail
 
 # Creating function based views
 def installer_company_detail_view(request, installer_id, company_id):
-    installer = get_object_or_404(InstallerDetail, pk=installer_id)
-    company = get_object_or_404(CompanyDetail, pk=company_id)
+    installer = get_object_or_404(InstallerDetail, installer_id=installer_id) #can use pk but being more explict
+    company = get_object_or_404(CompanyDetail, installer_partner_cmy_id=company_id)
     context = {
         'installer': installer,
         'company': company
