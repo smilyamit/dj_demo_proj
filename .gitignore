@@ -1,0 +1,32 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+/.venv/
+
+# IDE specific files
+.idea/
+.vscode/
+
+# Compiled Python files
+*.pyc
+
+# Compiled C extension files
+*.so
+
+# Compiled Java files
+*.class
+
+# Compiled Ruby files
+*.rbc
+
+# Compiled TypeScript files
+*.tsbuildinfo
+
+# Node.js
+node_modules/
