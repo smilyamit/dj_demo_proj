@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- Your HTML template -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,11 +7,19 @@
 <body>
   <h1>Installer and Company information </h1>
 
-  <p>Installer Vorname: {{installer.installer_vorname}}</p>
-  <p>Installer Nachname: {{installer.installer_nachname}}</p>
-  <p>Installer id: {{installer.installer_id}}</p>
+{#  <p>Installer Vorname: {{ installer.installer_vorname }}</p>#}
+{#  <p>Installer Nachname: {{ installer.installer_nachname }}</p>#}
+{#  <p>Installer id: {{ installer.installer_id }}</p>#}
+{##}
+{#  <p>Company Name: {{ company.company_name }}</p>#}
+{#  <p>Company id: {{ company.installer_partner_cmy_id }}</p>#}
 
-  <p>Company Name: {{company.company_name}}</p>
-  <p>Company id: {{company.installer_partner_cmy_id}}</p>
+  <h2>Submit Form</h2>
+<form method="post" action="">
+    {% csrf_token %}
+    {{ installer_form.as_p }}
+    {{ company_form.as_p }}
+    <button type="submit">Submit</button>
+</form>
 </body>
 </html>

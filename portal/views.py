@@ -1,18 +1,27 @@
 from django.shortcuts import render, get_object_or_404
 from .models import InstallerDetail, CompanyDetail
+from .forms import  InstallerDetailForm, CompanyDetailForm
 
 
-# Creating function based views
-def installer_company_detail_view(request, installer_id, company_id):
-    installer = get_object_or_404(InstallerDetail, installer_id=installer_id) #can use pk but being more explict
-    company = get_object_or_404(CompanyDetail, installer_partner_cmy_id=company_id)
+def installer_company_detail_view(request):
+    if request.method == 'POST':
+        installer_form = InstallerDetailForm(request.POST)
+        company_form = CompanyDetailForm(request.POST)
+
+        if installer_form.is_valid() and company_form.is_valid():
+            installer = installer_form.save(commit=False)
+            installer.save()
+            company = company_form.save(commit=False)
+            company.save()
+
+    else:
+        installer_form = InstallerDetailForm()
+        company_form = CompanyDetailForm()
+
     context = {
-        'installer': installer,
-        'company': company
+        'installer_form': installer_form,
+        'company_form': company_form,
     }
+
     return render(request, "portal/installer_and_company_detail.html", context)
 
-
-# def company_detail_view(request, company_id):
-#     company = get_object_or_404(CompanyDetail, pk=company_id)
-#     return render(request, "portal/installer_and_company_detail.html", {'company': company})
